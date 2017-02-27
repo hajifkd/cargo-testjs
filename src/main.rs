@@ -73,12 +73,12 @@ fn find_test_jss(proj_root: &Path, target: &str) -> Vec<PathBuf> {
                                                             .expect("Cannot decode the directory name")));
 
     files.filter(|f| f.is_ok())
-                      .map(|f| f.unwrap().file_name().into_string())
-                      .filter(|f| f.is_ok())
-                      .map(|f| f.unwrap())
-                      .filter(|f| re.is_match(f))
-                      .map(|f| test_dir.join(f))
-                      .collect::<Vec<PathBuf>>()
+         .map(|f| f.unwrap().file_name().into_string())
+         .filter(|f| f.is_ok())
+         .map(|f| f.unwrap())
+         .filter(|f| re.is_match(f))
+         .map(|f| test_dir.join(f))
+         .collect::<Vec<PathBuf>>()
 }
 
 fn exec_nodejs(script: &str) {
