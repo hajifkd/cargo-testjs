@@ -4,3 +4,11 @@ version = "0.1.0"
 authors = ["Hajime Fukuda <hajime.fukuda@me.com>"]
 
 [dependencies]
+toml = "*"
+rustc-serialize = "*"
+serde_derive = "*"
+serde = "*"
+regex = "*"
+
+[testjs]
+#prelude = "tests/prelude.js"
