@@ -122,7 +122,7 @@ fn main() {
     let config = load_config(&toml_location);
     let cargo_args = ["test", "--target", &config.target, "--no-run"];
 
-    println!("{}", Blue.paint("Staring JS Test..."));
+    println!("{}", Blue.paint("Compiling JS Test..."));
     println!("{}", Green.paint(format!("cargo {}", cargo_args.join(" "))));
     Command::new("cargo")
             .args(&cargo_args)
@@ -130,7 +130,6 @@ fn main() {
             .stderr(Stdio::inherit())
             .spawn().expect("Cannot execute cargo")
             .wait().expect(&format!("Command cargo {} did not finish properly", cargo_args.join(" ")));
-    println!("{}", Green.paint("Compiling the test has done."));
 
     let mut files = find_test_jss(&proj_root, &config.target);
     let path = if files.len() == 1 {
@@ -145,8 +144,7 @@ fn main() {
         files[files.len() - 1].as_path()
     };
 
-    println!("{}", Green.paint("Now, we start node..."));
-    println!("");
+    println!("{}", Blue.paint("Running node..."));
 
     let mut scripts = String::new();
 
