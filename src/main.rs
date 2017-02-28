@@ -67,10 +67,14 @@ fn load_config(path: &str) -> Config {
     let toml_config = t.parse::<Value>().expect(&format!("Unable to parse {}", path));
     let mut config = Config { node: NODE.to_owned(), target: TARGET.to_owned(), prelude: None };
 
-    if let Some(testjs) = toml_config["package"]["metadata"].get("testjs") {
-        load_config!(testjs, config, node);
-        load_config!(testjs, config, target);
-        load_config_option!(testjs, config, prelude);
+    if let Some(package) = toml_config.get("package") {
+        if let Some(metadata) = package.get("metadata") {
+            if let Some(testjs) = metadata.get("testjs") {
+                load_config!(testjs, config, node);
+                load_config!(testjs, config, target);
+                load_config_option!(testjs, config, prelude);
+            }
+        }
     }
 
     config
