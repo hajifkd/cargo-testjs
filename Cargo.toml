@@ -2,6 +2,11 @@
 name = "cargo-testjs"
 version = "0.1.0"
 authors = ["Hajime Fukuda <hajime.fukuda@me.com>"]
+repository = "https://github.com/hajifkd/cargo-testjs"
+keywords = ["emscripten", "javascript", "test"]
+license-file = "LICENSE"
+readme = "README.md"
+description = "Cargo extension to run tests by nodejs"
 
 [dependencies]
 toml = "*"
@@ -10,7 +15,3 @@ serde_derive = "*"
 serde = "*"
 regex = "*"
 ansi_term = "*"
-
-[package.metadata.testjs]
-node = "nodejs"
-prelude = "tests/prelude.js"
